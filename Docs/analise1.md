@@ -54,5 +54,5 @@ Durante a inspeção inicial, foram detectados valores fora do domínio possíve
     * *Hipótese:* Investigar se patologias cardíacas nesta região/amostra afetam mais meninos, ou se há um viés na coleta (ex: meninos sendo levados ao médico com mais frequência).
 
 3.  **Feature Engineering (Próximos Passos):**
-    * [cite_start]As variáveis `Peso` e `Altura` sozinhas podem ser fracas, mas são fundamentais para recalcular o `IMC` (que tem 36% de nulos) e validar os dados existentes.
+    * As variáveis `Peso` e `Altura` sozinhas podem ser fracas, mas são fundamentais para recalcular o `IMC` (que tem 36% de nulos) e validar os dados existentes.
     * As datas (`DN` e `Atendimento`) devem ser usadas para recalcular a `Idade` exata e corrigir os ruídos (valores negativos) encontrados nessa coluna.
