@@ -71,4 +71,4 @@ Este repositório está organizado conforme a evolução das etapas do KDD:
 
 ## 🤝 Autor
 
-João Pedro de Castro - ![jaopredos](https://github.com/jaopredos)
+João Pedro de Castro - [jaopredos](https://github.com/jaopredos)
