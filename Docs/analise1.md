@@ -21,21 +21,26 @@ Abaixo, detalhamos a integridade e a utilidade esperada de cada variável para o
 
 | Variável | % Faltante (aprox.) | Status / Observação | Potencial Preditivo |
 | :--- | :---: | :--- | :---: |
-| **Sopro** | 9.0% | **Crítico.** 34.42% dos pacientes possuem sopro. | ⭐⭐⭐ Alta |
-| **Pulsos** | 9.0% | Requer tratamento de nulos. | ⭐⭐ Média/Alta |
-| **FC** (Freq. Cardíaca) | 14.5% | Dado vital importante. | ⭐⭐ Média |
-| **Peso** | 2.5% | Contém ruídos graves (Ex: valores negativos como `-40`). | ⭐ Baixa/Média |
-| **Altura** | 0.0% | Dados completos, mas verificar consistência. | ⭐ Baixa/Média |
-| **Idade** | 11.5% | Contém ruídos graves (Ex: `-113.18`, `0.01`). Essencial para *Feature Engineering*. | ⭐ Média (Indireta) |
-| **IMC** | 36.0% | Alto índice de faltantes. Validar com tabelas de crescimento. | ❓ A verificar |
-| **Motivo 1** | 8.2% | Texto livre ou categórico? | ❓ A verificar |
-| **Motivo 2** | 27.0% | Alta ausência. | 🔻 Baixa |
-| **Convênio** | 32.0% | Dado administrativo. | 🔻 Baixa |
-| **HDA 1** | 33.0% | Histórico da Doença Atual. | ⭐ Média |
-| **HDA 2** | 97.0% | **Candidata a exclusão** (quase vazia). | ❌ Nula |
-| **Atendimento / DN** | 7.5% - 11% | Datas. Úteis apenas para cálculo de idade ou sazonalidade. | 🔻 Baixa (Direta) |
+| **Sopro** | 9.0% | **Crítico.** 34.42% dos pacientes possuem sopro. Forte indício de anomalia. | ⭐⭐⭐ Alta |
+| **PPA** | 1.7% | **Feature Chave.** Variável derivada (normalizada por idade/sexo). Baixa ausência torna-a superior à PAS/PAD brutas. | ⭐⭐⭐ Alta |
+| **Pulsos** | 9.0% | Requer tratamento de nulos. Indicador vital físico. | ⭐⭐ Média/Alta |
+| **B2** | 9.0% | Tipo do segundo som cardíaco (bulha). Relevante para ausculta. | ⭐⭐ Média/Alta |
+| **FC** (Freq. Cardíaca) | 14.5% | Dado vital importante. Verificar outliers. | ⭐⭐ Média |
+| **SEXO** | 0.03% | Fundamental para cálculos de referência (ex: curvas de crescimento e pressão). | ⭐⭐ Média (Essencial) |
+| **HDA 1** | 33.0% | Histórico da Doença Atual. Pode conter palavras-chave valiosas. | ⭐ Média |
+| **Idade** | 11.5% | Contém ruídos graves (Ex: `-113.18`). Essencial para categorização do paciente. | ⭐ Média (Indireta) |
+| **Peso** | 2.5% | Contém ruídos (valores negativos). Base para cálculo de IMC. | ⭐ Baixa/Média |
+| **Altura** | 0.0% | Dados completos. Base para cálculo de IMC. | ⭐ Baixa/Média |
+| **IMC** | 36.0% | Alto índice de faltantes. Necessário recalcular usando Peso/Altura para recuperar dados. | ❓ A verificar |
+| **PAS** (Sistólica) | 60.0% | **Alta Ausência.** Provavelmente substituída pela variável `PPA`. | 🔻 Baixa (Usar PPA) |
+| **PAD** (Diastólica) | 60.0% | **Alta Ausência.** Provavelmente substituída pela variável `PPA`. | 🔻 Baixa (Usar PPA) |
+| **Motivo 1** | 8.2% | Texto livre ou categórico. Requer NLP ou limpeza. | ❓ A verificar |
+| **Motivo 2** | 27.0% | Alta ausência. Informação complementar rara. | 🔻 Baixa |
+| **Convênio** | 32.0% | Dado administrativo/financeiro. Baixa relevância clínica. | 🔻 Baixa |
+| **Atendimento / DN** | 7.5% - 11% | Úteis apenas para engenharia de features (cálculo de idade exata). | 🔻 Baixa (Direta) |
+| **HDA 2** | 97.0% | **Candidata a exclusão** (virtualmente vazia). | ❌ Nula |
 | **ID** | 0.0% | Identificador único. **Excluir da modelagem.** | ❌ Nula |
-| **B2** | 9.0% | Tipo de som cardíaco. | ⭐ Média/Alta |
+
 
 ## 4. Anomalias e Ruídos Identificados
 Durante a inspeção inicial, foram detectados valores fora do domínio possível (*outliers* ou erros de digitação) que necessitam de limpeza antes da etapa de modelagem:
