@@ -66,8 +66,8 @@ Este repositório está organizado conforme a evolução das etapas do KDD:
 * [x] Coleta e entendimento dos dados
 * [x] Análise Exploratória (EDA)
 * [x] Tratamento de dados faltantes
-* [ ] Modelagem Preditiva
-* [ ] Avaliação de Resultados
+* [x] Modelagem Preditiva
+* [x] Avaliação de Resultados
 
 ## 🤝 Autor
 
